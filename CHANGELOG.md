@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## 1.3.0
+
+- Added styles for TextField
+
 ## 1.2.0
 
 - Changed color mappings in getMaterialYouPalette
