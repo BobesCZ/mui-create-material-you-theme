@@ -1,0 +1,1 @@
+import{o as c,r as s}from"./index-C5e9SFkp.js";let u=0;function f(t){const[e,o]=s.useState(t),a=t||e;return s.useEffect(()=>{e==null&&(u+=1,o(`mui-${u}`))},[e]),a}const l={...c},n=l.useId;function d(t){if(n!==void 0){const e=n();return t??e}return f(t)}export{d as u};
