@@ -4,6 +4,23 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## 2.0.0
+
+- Updated @mui/material 7.2.0 → 7.3.9
+- Updated @material/material-color-utilities to 0.3.0 → 0.4.0
+- Changed peerDependencies to support react 18 and 19
+- Fix TypeScript module augmentations not being detected when using `moduleResolution: bundler`.
+
+### Breaking changes
+
+TypeScript users must now explicitly enable the library's type augmentations:
+
+```ts
+import type {} from 'mui-create-material-you-theme/themeAugmentation'
+```
+
+See the [TypeScript setup](https://github.com/BobesCZ/mui-create-material-you-theme?tab=readme-ov-file#%EF%B8%8F-typescript-setup) for details.
+
 ## 1.3.0
 
 - Added styles for TextField

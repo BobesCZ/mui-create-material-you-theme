@@ -1,7 +1,13 @@
-import { CssBaseline, ThemeOptions, ThemeProvider } from '@mui/material'
+import { createTheme, CssBaseline, ThemeOptions, ThemeProvider } from '@mui/material'
 import { Meta, StoryObj } from '@storybook/react'
 
-import { createMaterialYouTheme } from '../../lib'
+import {
+  createMaterialYouTheme,
+  getMaterialYouComponents,
+  getMaterialYouPalette,
+  getMaterialYouScheme,
+  MaterialYouSchemeExported,
+} from '../../lib'
 import { customTheme } from './customTheme'
 import { ExamplePage } from './ExamplePage'
 
@@ -69,4 +75,46 @@ const CustomThemeAppStory = () => {
 }
 export const CustomThemeApp: Story = {
   render: () => <CustomThemeAppStory />,
+}
+
+const ManualThemeAppStory = () => {
+  const themeOptions: ThemeOptions = {
+    typography: {
+      fontFamily: 'Playpen Sans Variable, cursive',
+      h5: {
+        fontSize: '3rem',
+      },
+    },
+    components: {
+      MuiCard: {
+        styleOverrides: {
+          root: {
+            padding: 20,
+          },
+        },
+      },
+    },
+  }
+  const missingColors = {
+    info: '#0000ff',
+    success: '#00ff00',
+    warning: '#ff0000',
+  }
+  const exportedScheme: MaterialYouSchemeExported = customTheme.schemes.light
+
+  const scheme = getMaterialYouScheme('light', exportedScheme, missingColors)
+  const palette = getMaterialYouPalette('light', scheme)
+  const theme = createTheme({ ...themeOptions, palette })
+  const components = getMaterialYouComponents(theme)
+  const themeWithComponents = createTheme(theme, { components })
+
+  return (
+    <ThemeProvider theme={themeWithComponents}>
+      <CssBaseline />
+      <ExamplePage />
+    </ThemeProvider>
+  )
+}
+export const ManualThemeApp: Story = {
+  render: () => <ManualThemeAppStory />,
 }

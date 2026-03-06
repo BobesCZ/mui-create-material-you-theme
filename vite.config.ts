@@ -9,17 +9,18 @@ export default defineConfig({
     dts({
       insertTypesEntry: true,
       tsconfigPath: './tsconfig.json',
-      include: ['src/lib'],
+      include: ['src/index.ts', 'src/themeAugmentation.ts', 'src/lib'],
+      copyDtsFiles: true,
     }),
   ],
   build: {
     lib: {
-      entry: path.resolve(__dirname, 'src/lib/index.ts'),
+      entry: path.resolve(__dirname, 'src/index.ts'),
       name: 'MuiCreateMaterialYouTheme',
       fileName: (format) => `mui-create-material-you-theme.${format}.js`,
     },
     rollupOptions: {
-      input: path.resolve(__dirname, 'src/lib/index.ts'),
+      input: path.resolve(__dirname, 'src/index.ts'),
       external: ['react', 'react-dom'],
       output: {
         globals: {
